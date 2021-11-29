@@ -30,7 +30,7 @@ class ShopUserRegisterForm(UserCreationForm):
         if data < 18:
             raise forms.ValidationError("Вы слишком молоды!")
         return data
-    
+
     def save(self):
         user = super(ShopUserRegisterForm, self).save()
 

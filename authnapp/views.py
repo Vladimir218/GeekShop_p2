@@ -7,6 +7,7 @@ from authnapp.forms import ShopUserEditForm, ShopUserLoginForm, ShopUserRegister
 from django.core.mail import send_mail
 from authnapp.models import ShopUser
 
+
 def login(request):
     title = "вход"
 
@@ -48,7 +49,7 @@ def register(request):
             return HttpResponseRedirect(reverse("auth:login"))
     else:
         register_form = ShopUserRegisterForm()
-            
+
     content = {"title": title, "register_form": register_form}
     return render(request, "authnapp/register.html", content)
 
@@ -77,7 +78,7 @@ def send_verify_mail(user):
     \n{settings.DOMAIN_NAME}{verify_link}"
 
     print(f"from: {settings.EMAIL_HOST_USER}, to: {user.email}")
-    return send_mail(title, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False,)
+    return send_mail(title, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False)
 
 
 def verify(request, email, activation_key):
